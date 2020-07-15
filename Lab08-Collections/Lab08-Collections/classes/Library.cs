@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Lab08_Collections.classes
 {
-    class Library<T> : IEnumerable<T>
+    public class Library<T> : IEnumerable<T>
     {
         T[] items = new T[10];
         int count;
@@ -17,10 +17,27 @@ namespace Lab08_Collections.classes
         public void Add(T item)
         {
             if (count == items.Length)
-            {
                 Array.Resize(ref items, items.Length + 5);
-            }
             items[count++] = item;
+        }
+
+        public void Remove(int index)
+        {
+            if (index > -1 && index < count)
+            {
+                T[] newItems = new T[count - 1];
+                for (int i = 0; i < count; i++)
+                {
+                    if (i < index)
+                        newItems[i] = items[i];
+                    else if (i == index)
+                        continue;
+                    else
+                        newItems[i - 1] = items[i];
+                }
+                count--;
+                items = newItems;
+            }
         }
 
         /// <summary>
