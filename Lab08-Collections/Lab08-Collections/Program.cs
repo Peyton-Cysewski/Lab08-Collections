@@ -8,11 +8,11 @@ namespace Lab08_Collections
     public class Program
     {
         public static Library<Book> Library { get; set; }
-        public static Dictionary<int, Book> BookBag { get; set; }
+        public static List<Book> BookBag { get; set; }
         static void Main(string[] args)
         {
             Library = new Library<Book>();
-            BookBag = new Dictionary<int, Book>();
+            BookBag = new List<Book>();
             LoadBooks();
             UserInterface();
         }
@@ -126,10 +126,15 @@ namespace Lab08_Collections
                         Library.Add(book);
                         break;
                     case "3":
+                        BorrowBook("Hamlet");
                         break;
                     case "4":
                         break;
                     case "5":
+                        foreach (Book i in BookBag)
+                        {
+                            Console.WriteLine($"{i.Title} By: {i.BookAuthor.FirstName} {i.BookAuthor.LastName} -- {i.BookGenre} genre");
+                        }
                         break;
                     case "6":
                         quit = true;
@@ -139,6 +144,10 @@ namespace Lab08_Collections
                         break;
                 }
             }
+        }
+
+        public static void BorrowBook(string title)
+        {
         }
     }
 }
