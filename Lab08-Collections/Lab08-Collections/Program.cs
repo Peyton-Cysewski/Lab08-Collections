@@ -93,12 +93,37 @@ namespace Lab08_Collections
                 switch (choice)
                 {
                     case "1":
-                        foreach (Book book in Library)
+                        foreach (Book novel in Library)
                         {
-                            Console.WriteLine($"{book.Title} By: {book.BookAuthor.FirstName} {book.BookAuthor.LastName} -- {book.BookGenre} genre");
+                            Console.WriteLine($"{novel.Title} By: {novel.BookAuthor.FirstName} {novel.BookAuthor.LastName} -- {novel.BookGenre} genre");
                         }
                         break;
                     case "2":
+                        Console.WriteLine("Please enter the title of the book:");
+                        string title = Console.ReadLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Please enter the author\'s first name:");
+                        string first = Console.ReadLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Please enter the author\'s last name:");
+                        string last = Console.ReadLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Please select the genre of this book");
+                        int genre = 0;
+                        while (genre < 1 || genre > 6)
+                        {
+                            foreach (int i in Enum.GetValues(typeof(Book.Genre)))
+                            {
+                                Console.WriteLine($"{i}. {(Book.Genre)i}");
+                            }
+                            string genreAnswer = Console.ReadLine();
+                            genre = Int32.TryParse(genreAnswer, out int result) ? result : 0;
+                        }
+                        Book book = new Book();
+                        book.Title = title;
+                        book.BookAuthor = new Author(first, last);
+                        book.BookGenre = (Book.Genre)genre;
+                        Library.Add(book);
                         break;
                     case "3":
                         break;
