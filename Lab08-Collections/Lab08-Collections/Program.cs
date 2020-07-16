@@ -17,6 +17,9 @@ namespace Lab08_Collections
             UserInterface();
         }
 
+        /// <summary>
+        /// Adds six books for interaction
+        /// </summary>
         public static void LoadBooks()
         {
             // Create Books
@@ -72,6 +75,9 @@ namespace Lab08_Collections
             Library.Add(RedOctober);
         }
 
+        /// <summary>
+        /// Controls the user experience for the app
+        /// </summary>
         public static void UserInterface()
         {
             Console.WriteLine("Welcome to Phil\'s Lending Library! Please choose an option below to get started:");
@@ -193,6 +199,10 @@ namespace Lab08_Collections
             }
         }
 
+        /// <summary>
+        /// Chooses a book to add to your book bag
+        /// </summary>
+        /// <param name="title">Title of the book of choice</param>
         public static void BorrowBook(string title)
         {
             int counter = 0;
@@ -207,6 +217,10 @@ namespace Lab08_Collections
             }
         }
 
+        /// <summary>
+        /// Chooses a book to return back to the library from your book bag
+        /// </summary>
+        /// <param name="title">Title of the targeted return book</param>
         public static void ReturnBook(string title)
         {
             Dictionary<int, Book> books = new Dictionary<int, Book>();

@@ -5,10 +5,7 @@
 ----
 
 ## Description
-***[Tell me about your application, should be about a paragraph]***
-This is a C# console application that will ask a user several questions about me, the
-developer. There are multiple question types ranging from inputting a number to True or False.
-At the end of the game the user receives their total score.
+This console app mimics an interaction a patron might have with a lending library. Books can be added to the library, then the user can choose to view the collection of books. If they like one, they can choose to borrow it and store it in their book bag. Here they can view what books they are currently borrowing. Once they are done with the book they can choose to return it to the library. It has a simple user interface with options for each of these actions or to exit the application.
 
 ---
 
@@ -24,26 +21,25 @@ Select ```File``` -> ```Open``` -> ```Project/Solution```
 
 Next navigate to the location you cloned the Repository.
 
-Double click on the ```Lab01-About-Me``` directory.
+Double click on the ```Lab08-Collections``` directory.
 
-Then select and open ```AboutMe.sln```
+Then select and open ```Lab08-Collections.sln```
 
 ---
 
 ### Visuals
-***[Add screenshots of your application in action]***
 
 #### Application Start
-![Image 1](https://via.placeholder.com/750x500)
+![Start](./assets/start.png)
 #### Using the Application
-![Image 1](https://via.placeholder.com/750x500)
+![Viewing the Bookshelf](./assets/bookshelf.png)
 #### Application End
-![Image 1](https://via.placeholder.com/750x500)
+![Borrowing a Book](./assets/borrow.png)
 
 ---
 
 ### Change Log
-1.1: *Added a Try/Catch/Finally for Question 2* - 5 Nov 2010  
+1.1: *Initial Release* - 15 July 2020  
 
 
 ------------------------------
