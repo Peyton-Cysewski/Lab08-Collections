@@ -1,6 +1,7 @@
 ﻿using Lab08_Collections.classes;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Lab08_Collections
 {
@@ -13,10 +14,7 @@ namespace Lab08_Collections
             Library = new Library<Book>();
             BookBag = new Dictionary<int, Book>();
             LoadBooks();
-            foreach (Book book in Library)
-            {
-                Console.WriteLine(book.Title);
-            }
+            UserInterface();
         }
 
         public static void LoadBooks()
@@ -72,6 +70,50 @@ namespace Lab08_Collections
             Library.Add(Hamlet);
             Library.Add(TheMazeRunner);
             Library.Add(RedOctober);
+        }
+
+        public static void UserInterface()
+        {
+            Console.WriteLine("Welcome to Phil\'s Lending Library! Please choose an option below to get started:");
+            bool quit = false;
+            while (!quit)
+            {
+                Console.WriteLine();
+                Console.WriteLine("1. View All Books");
+                Console.WriteLine("2. Add a Book");
+                Console.WriteLine("3. Borrow a Book");
+                Console.WriteLine("4. Return a Book");
+                Console.WriteLine("5. View Book Bag");
+                Console.WriteLine("6. Exit");
+                Console.WriteLine();
+
+                string choice = Console.ReadLine();
+                Console.WriteLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        foreach (Book book in Library)
+                        {
+                            Console.WriteLine($"{book.Title} By: {book.BookAuthor.FirstName} {book.BookAuthor.LastName} -- {book.BookGenre} genre");
+                        }
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        break;
+                    case "6":
+                        quit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Selection Please Try Again");
+                        break;
+                }
+            }
         }
     }
 }

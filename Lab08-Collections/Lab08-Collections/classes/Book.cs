@@ -13,7 +13,7 @@ namespace Lab08_Collections.classes
 
         public enum Genre
         {
-            SciFi,
+            SciFi = 1,
             Fantasy,
             Horror,
             Drama,

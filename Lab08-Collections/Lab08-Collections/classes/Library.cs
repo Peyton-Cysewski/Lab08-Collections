@@ -21,6 +21,10 @@ namespace Lab08_Collections.classes
             items[count++] = item;
         }
 
+        /// <summary>
+        /// Removes an item in the list at the specified base 0 index
+        /// </summary>
+        /// <param name="index">Index of targeted item to be removed</param>
         public void Remove(int index)
         {
             if (index > -1 && index < count)
