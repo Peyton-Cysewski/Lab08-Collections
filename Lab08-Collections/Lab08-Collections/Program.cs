@@ -95,7 +95,7 @@ namespace Lab08_Collections
                     case "1":
                         foreach (Book novel in Library)
                         {
-                            Console.WriteLine($"{novel.Title} By: {novel.BookAuthor.FirstName} {novel.BookAuthor.LastName} -- {novel.BookGenre} genre");
+                            Console.WriteLine($"- {novel.Title} By: {novel.BookAuthor.FirstName} {novel.BookAuthor.LastName} -- {novel.BookGenre} genre");
                         }
                         break;
                     case "2":
@@ -126,14 +126,35 @@ namespace Lab08_Collections
                         Library.Add(book);
                         break;
                     case "3":
-                        BorrowBook("Hamlet");
+                        Console.WriteLine("Choose the book that you would like to borrow:");
+                        int count = 0;
+                        int borrow = -1;
+                        while (borrow < 0 || borrow > Library.Count())
+                        {
+                            count = 0;
+                            foreach (Book b in Library)
+                            {
+                                Console.WriteLine($"{count + 1}. {b.Title} By: {b.BookAuthor.FirstName} {b.BookAuthor.LastName} -- {b.BookGenre} genre");
+                                count++;
+                            }
+                            Console.WriteLine();
+                            string answer = Console.ReadLine();
+                            borrow = Int32.TryParse(answer, out int result) ? result : -1;
+                        }
+                        count = 0;
+                        foreach (Book b in Library)
+                        {
+                            if (borrow == count + 1)
+                                BorrowBook(b.Title);
+                            count++;
+                        }
                         break;
                     case "4":
                         break;
                     case "5":
                         foreach (Book i in BookBag)
                         {
-                            Console.WriteLine($"{i.Title} By: {i.BookAuthor.FirstName} {i.BookAuthor.LastName} -- {i.BookGenre} genre");
+                            Console.WriteLine($"- {i.Title} By: {i.BookAuthor.FirstName} {i.BookAuthor.LastName} -- {i.BookGenre} genre");
                         }
                         break;
                     case "6":
@@ -148,6 +169,16 @@ namespace Lab08_Collections
 
         public static void BorrowBook(string title)
         {
+            int counter = 0;
+            foreach (Book b in Library)
+            {
+                if (b.Title == title)
+                {
+                    BookBag.Add(b);
+                    Library.Remove(counter);
+                }
+                counter++;
+            }
         }
     }
 }
