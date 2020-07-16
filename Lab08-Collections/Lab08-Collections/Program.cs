@@ -150,6 +150,32 @@ namespace Lab08_Collections
                         }
                         break;
                     case "4":
+                        Console.WriteLine("Choose the book that you would like to return:");
+                        int count2 = 0;
+                        int borrow2 = -1;
+                        while (borrow2 < 0 || borrow2 > BookBag.Count)
+                        {
+                            count2 = 0;
+                            foreach (Book b in BookBag)
+                            {
+                                Console.WriteLine($"{count2 + 1}. {b.Title} By: {b.BookAuthor.FirstName} {b.BookAuthor.LastName} -- {b.BookGenre} genre");
+                                count2++;
+                            }
+                            Console.WriteLine();
+                            string answer = Console.ReadLine();
+                            borrow2 = Int32.TryParse(answer, out int result) ? result : -1;
+                        }
+                        count2 = 0;
+                        Book returnBook = new Book();
+                        foreach (Book b in BookBag)
+                        {
+                            if (borrow2 == count2 + 1)
+                            {
+                                returnBook = b;
+                            }
+                            count2++;
+                        }
+                        ReturnBook(returnBook.Title);
                         break;
                     case "5":
                         foreach (Book i in BookBag)
@@ -179,6 +205,27 @@ namespace Lab08_Collections
                 }
                 counter++;
             }
+        }
+
+        public static void ReturnBook(string title)
+        {
+            Dictionary<int, Book> books = new Dictionary<int, Book>();
+            int counter = 0;
+            foreach (Book item in BookBag)
+            {
+                books.Add(counter++, item);
+            }
+            counter = 0;
+            int key = 0;
+            foreach (Book item in BookBag)
+            {
+                if (item.Title == title)
+                    key = counter;
+                counter++;
+            }
+
+            Library.Add(books[key]);
+            BookBag.Remove(books[key]);
         }
     }
 }
